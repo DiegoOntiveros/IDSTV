@@ -51,16 +51,21 @@ this.setVisible(true);
 		 Nombre.setText("Ingrese su nombre completo:");
 		 Nombre.setHorizontalAlignment(SwingConstants.CENTER);
 		 Nombre.setVerticalAlignment(SwingConstants.CENTER);
-		 Nombre.setBounds(85, 450, 450, 50);
-		 Nombre.setFont (new Font("Arial", Font.BOLD,15));
-		// Nombre.setBackground(Color.white);
+		 Nombre.setBounds(20, 80, 210,50);
+		 Nombre.setFont (new Font("Arial", Font.BOLD,14));
+		 //Nombre.setBackground(Color.white);
 		 Nombre.setOpaque(true);
 		 Nombre.setForeground(Color.black);
 		 this.add(Nombre);
-		 
+		 		 
 		 this.setVisible(true);
+//============================================================================================	 
 
-		 
+	JPanel barra_nombre = new JPanel();
+	barra_nombre.setBounds(50, 50, 50, 50);
+	
+	this.add(barra_nombre);
+	this.setVisible(true);
 		 
 		 
 		 
@@ -77,7 +82,6 @@ this.setVisible(true);
 		 boton.setBackground(Color.white);
 		 boton.setOpaque(true);
 		 this.setVisible(true);
-
 		 
 		 
 		 
