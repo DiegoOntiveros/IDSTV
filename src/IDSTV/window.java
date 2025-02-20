@@ -22,8 +22,8 @@ this.setVisible(true);
 	 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	 this.setResizable(true);
-	 this.setMaximumSize(new Dimension (800,400));
-	 this.setMinimumSize(new Dimension(400,400));
+	 this.setMaximumSize(new Dimension (5000,200));
+	 this.setMinimumSize(new Dimension(5000,300));
 		 this.setLocationRelativeTo(null);
 		 
 
