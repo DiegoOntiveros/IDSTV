@@ -49,7 +49,7 @@ this.setVisible(true);
 
 		 
 		 JLabel Nombre = new JLabel();
-		 Nombre.setText("Ingrese su nombre completo:");
+		 Nombre.setText("Tabla:");
 		 Nombre.setHorizontalAlignment(SwingConstants.CENTER);
 		 Nombre.setVerticalAlignment(SwingConstants.CENTER);
 		 Nombre.setBounds(20, 80, 210,50);
@@ -150,6 +150,9 @@ this.setVisible(true);
 		 boton.setBackground(Color.white);
 		 boton.setOpaque(true);
 		 this.setVisible(true);
+	
+//============================================================================================	 
+		 
 		 
 		 JButton anadir = new JButton();
 		 anadir.setBounds(720, 20, 100, 100);
@@ -162,7 +165,6 @@ this.setVisible(true);
 		 anadir.setBackground(Color.white);
 		 anadir.setOpaque(true);
 		 this.setVisible(true);
-	//============================================================================================	 
 		 
 		
 		 

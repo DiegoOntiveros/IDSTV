@@ -7,10 +7,13 @@ import java.awt.Font;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -84,10 +87,48 @@ this.setVisible(true);
 		 Ciudad.setOpaque(true);
 		 Ciudad.setForeground(Color.black);
 		 this.add(Ciudad);
+		 this.setVisible(false);
 		 
+		 String[] ciudades = {"Cabo san lucas","La paz","San jose","Ciudad constitucion"};
+
+		 JComboBox lista = new JComboBox(ciudades);
+		 lista.setBounds(20,220, 150,50);
+		 this.add(lista);
 		 
+//============================================================================================	 	 
 		 
-		 		 
+		 JLabel Genero = new JLabel();
+		 Genero.setText("Escoja su Genero:");
+		 Genero.setHorizontalAlignment(SwingConstants.CENTER);
+		 Genero.setVerticalAlignment(SwingConstants.CENTER);
+		 Genero.setBounds(20, 170, 140,280);
+		 Genero.setFont (new Font("Arial", Font.BOLD,15));
+		 //Nombre.setBackground(Color.white);
+		 Genero.setOpaque(true);
+		 Genero.setForeground(Color.black);
+		 this.add(Genero);
+		 this.setVisible(false);
+
+		 
+		 JRadioButton opcion_genero = new JRadioButton("Hombre",false);
+		 opcion_genero.setBounds(20, 330, 170,40);
+		 this.add(opcion_genero);
+		 this.setVisible(false);
+		 
+		 JRadioButton opcion_genero2 = new JRadioButton("Mujer",false);
+		 opcion_genero2.setBounds(20, 360, 170,40);
+		 this.add(opcion_genero2);
+		 this.setVisible(false);
+		 
+		 JRadioButton opcion_genero3 = new JRadioButton("No definido",false);
+		 opcion_genero3.setBounds(20, 390, 170,40);
+		 this.add(opcion_genero3);
+		 this.setVisible(false);
+
+		 ButtonGroup opciones = new ButtonGroup();
+		 opciones.add(opcion_genero);
+		 opciones.add(opcion_genero2);
+		 opciones.add(opcion_genero3);
 		 
 //============================================================================================	 
 		 JButton boton = new JButton();

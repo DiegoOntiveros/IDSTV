@@ -20,6 +20,6 @@ public class Main {
 	 
 		JFrame window = new JFrame();
 		
-		Tabla tabla = new Tabla();
+		//Tabla tabla = new Tabla();
 	}
 }
