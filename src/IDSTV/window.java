@@ -46,6 +46,8 @@ this.setVisible(true);
 		 this.add(textobase);
 		 
 		 this.setVisible(true);
+//============================================================================================	 
+
 		 
 		 JLabel Nombre = new JLabel();
 		 Nombre.setText("Ingrese su nombre completo:");
@@ -59,6 +61,8 @@ this.setVisible(true);
 		 this.add(Nombre);
 		 		 
 		 this.setVisible(true);
+		 
+		 
 //============================================================================================	 
 
 		 JTextField barra_nombre = new JTextField();
@@ -66,6 +70,8 @@ this.setVisible(true);
 	
 		 this.add(barra_nombre);
 		 this.setVisible(true);
+		 
+		 
 //============================================================================================	 
 		 
 		 JLabel Ciudad = new JLabel();
@@ -78,10 +84,10 @@ this.setVisible(true);
 		 Ciudad.setOpaque(true);
 		 Ciudad.setForeground(Color.black);
 		 this.add(Ciudad);
+		 
+		 
+		 
 		 		 
-
-		 
-		 
 		 
 //============================================================================================	 
 		 JButton boton = new JButton();
@@ -99,4 +105,7 @@ this.setVisible(true);
 		 
 		 
 	}
+
+	
+	
 }
