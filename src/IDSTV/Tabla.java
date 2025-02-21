@@ -152,8 +152,8 @@ this.setVisible(true);
 		 this.setVisible(true);
 		 
 		 JButton anadir = new JButton();
-		 anadir.setBounds(500, 500, 500, 100);
-		 anadir.setText("Regristarce");
+		 anadir.setBounds(720, 20, 100, 100);
+		 anadir.setText("Anadir");
 		 anadir.setForeground(Color.BLACK);
 		 anadir.setFont (new Font("Arial", Font.BOLD,15));
 		 this.add(anadir);
