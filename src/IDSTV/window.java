@@ -61,12 +61,25 @@ this.setVisible(true);
 		 this.setVisible(true);
 //============================================================================================	 
 
-	JPanel barra_nombre = new JPanel();
-	barra_nombre.setBounds(50, 50, 50, 50);
+		 JTextField barra_nombre = new JTextField();
+		 barra_nombre.setBounds(20, 130, 250, 30);
 	
-	this.add(barra_nombre);
-	this.setVisible(true);
+		 this.add(barra_nombre);
+		 this.setVisible(true);
+//============================================================================================	 
 		 
+		 JLabel Ciudad = new JLabel();
+		 Ciudad.setText("Escoja su ciudad:");
+		 Ciudad.setHorizontalAlignment(SwingConstants.CENTER);
+		 Ciudad.setVerticalAlignment(SwingConstants.CENTER);
+		 Ciudad.setBounds(20, 170, 140,50);
+		 Ciudad.setFont (new Font("Arial", Font.BOLD,15));
+		 //Nombre.setBackground(Color.white);
+		 Ciudad.setOpaque(true);
+		 Ciudad.setForeground(Color.black);
+		 this.add(Ciudad);
+		 		 
+
 		 
 		 
 		 
