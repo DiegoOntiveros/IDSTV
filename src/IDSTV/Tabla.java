@@ -5,9 +5,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -173,9 +177,66 @@ this.setVisible(true);
 		 		 
 		 
 //============================================================================================	 
-		
+	//Agregar una barra con opciones de uso en ella:	
+		 
+	//Opcion 1 Guardar datos:
+		 JMenuBar barra = new JMenuBar();
+		 
+		 JMenu Archivo = new JMenu("Guardar");
+		 barra.add(Archivo);
+		 
+
+		 JMenu op_1 = new JMenu("Guardar todo");
+		 Archivo.add(op_1);
+		 
+		 JMenu op_2 = new JMenu("Guardar como:");
+		 Archivo.add(op_2);
+		 
+		 JMenu op_3 = new JMenu("Guardar en:");
+		 Archivo.add(op_3);
+		 
+		 JCheckBoxMenuItem Usb = new JCheckBoxMenuItem("usb");
+		 op_3.add(Usb);
+		 
+		 JCheckBoxMenuItem Disco_duro = new JCheckBoxMenuItem("Disco duro (c:)");
+		 op_3.add(Disco_duro);
+		 
+		 JCheckBoxMenuItem Nube = new JCheckBoxMenuItem("En la nuebe");
+		 op_3.add(Nube);
+//=============================================================================================
+		 
+	//opcion 2 modificar datos
+		 JMenu Modificar = new JMenu("Modificar");
+		 barra.add(Modificar);
+		 
+		 JMenu op1 = new JMenu("Texto");
+		 Modificar.add(op1);
+		 
+		 JMenu op2 = new JMenu("tamano del texto:");
+		 Modificar.add(op2);
+		 
+		 			
+		 JMenu op3 = new JMenu("Espacio entre letras:");
+		 Modificar.add(op3);	
+		 
+		 JMenu op4 = new JMenu("Modificar tabla");
+		 Modificar.add(op4);
+//===============================================================================================		 
+		 
+	//Opcion 3
+		 JMenu Agregar = new JMenu("Agregar");
+		 barra.add(Agregar);
+		 
+	//Opcion 4
+		 JMenu Eliminar = new JMenu("Eliminar");
+		 barra.add(Eliminar);
+		 
+		 JMenu Salir = new JMenu("Salir");
+		 barra.add(Salir);
 		 
 		 
+		 this.setJMenuBar(barra);
+		 this.revalidate();
 		
 		
 		

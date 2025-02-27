@@ -15,11 +15,13 @@ public class Main {
 		
 		
 		
-		window objeto = new window();
+		//window objeto = new window();
 	 
 	 
-		JFrame window = new JFrame();
+		//JFrame window = new JFrame();
 		
-		//Tabla tabla = new Tabla();
+		Tabla tabla = new Tabla();
+		
+		//Login iniciarsesion = new Login();
 	}
 }

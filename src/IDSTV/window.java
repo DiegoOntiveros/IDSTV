@@ -171,6 +171,7 @@ this.setVisible(true);
 		 opciones.add(opcion_genero);
 		 opciones.add(opcion_genero2);
 		 opciones.add(opcion_genero3);
+		
 		 
 //============================================================================================	 
 		 //boton de regristo:
