@@ -36,6 +36,9 @@ this.setVisible(true);
 	 this.setMinimumSize(new Dimension(1000,600));
 		 this.setLocationRelativeTo(null);
 	        this.setLayout(null);
+	        
+	        
+	      //Agregar icono en jframe:
 	        Image image = Toolkit.getDefaultToolkit().getImage("src/icono.png");
 	        this.setIconImage(image);
 	        
