@@ -20,15 +20,14 @@ public class Calculadora extends JFrame {
 
         this.setResizable(true);
         this.setMaximumSize(new Dimension(650, 650));
-        this.setMinimumSize(new Dimension(650, 500));
+        this.setMinimumSize(new Dimension(650, 520));
         this.setLocationRelativeTo(null);
         this.setLayout(null);
         
         // ============================================================
         // PANEL DE LA CALCULADORA:
-        JLabel barra = new JLabel();
+        JTextField barra = new JTextField();
         barra.setBounds(20, 10, 600, 150);
-        barra.setText("Ejemplo de pantalla");
         this.add(barra);
 
         // ============================================================

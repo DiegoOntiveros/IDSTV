@@ -20,10 +20,12 @@ public class Main {
 	 
 		//JFrame window = new JFrame();
 		
-		//Tabla tabla = new Tabla();
+		Tabla tabla = new Tabla();
 		
 		//Login iniciarsesion = new Login();
 		
-		Calculadora calculadora = new Calculadora();
+		//Calculadora calculadora = new Calculadora();
+		
+		Calculadora_hecha_con_layuot caluladorea = new Calculadora_hecha_con_layuot();
 	}
 }

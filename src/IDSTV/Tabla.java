@@ -3,6 +3,9 @@ package IDSTV;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Menu;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
@@ -33,7 +36,8 @@ this.setVisible(true);
 	 this.setMinimumSize(new Dimension(1000,600));
 		 this.setLocationRelativeTo(null);
 	        this.setLayout(null);
-	        
+	        Image image = Toolkit.getDefaultToolkit().getImage("src/icono.png");
+	        this.setIconImage(image);
 	        
 //============================================================================================	 
 		
