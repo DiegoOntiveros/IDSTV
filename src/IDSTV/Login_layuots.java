@@ -51,8 +51,26 @@ public class Login_layuots  extends JFrame{
        JPanel paneel_1 = new JPanel(new BorderLayout());
        paneel_1.setBackground(Color.green);
        //tamano del panel
-       paneel_1.setPreferredSize(new Dimension(350,600));
+       paneel_1.setPreferredSize(new Dimension(250,600));
+      
        this.setVisible(true);
+       
+       JLabel textos = new JLabel();
+       textos.setText("CAPITAL:");
+       textos.setOpaque(true);
+       textos.setBackground(Color.ORANGE);
+       textos.setHorizontalAlignment(JLabel.LEFT);
+       textos.setPreferredSize(new Dimension(70, 100));
+       paneel_1.add(textos, BorderLayout.PAGE_START);
+       
+       JLabel textos2 = new JLabel();
+       textos2.setText("TIEMPO:");
+       textos2.setOpaque(true);
+       textos2.setBackground(Color.gray);
+       textos2.setHorizontalAlignment(JLabel.CENTER);
+       textos2.setPreferredSize(new Dimension(70, 50));
+       paneel_1.add(textos2, BorderLayout.LINE_START);
+
        
        
        
@@ -63,7 +81,7 @@ public class Login_layuots  extends JFrame{
        JPanel panel_2 = new JPanel(new BorderLayout());
        panel_2.setBackground(Color.PINK);
        panel_2.setOpaque(true);
-       panel_2.setPreferredSize(new Dimension(150,300));
+       panel_2.setPreferredSize(new Dimension(150,200));
        
        // este panel se pone en el panel uno para que haci oueda estar asta el ultima parte dela pantalla
        paneel_1.add(panel_2,BorderLayout.PAGE_END);
