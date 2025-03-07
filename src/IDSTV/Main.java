@@ -28,9 +28,11 @@ public class Main {
 		
 		//Calculadora_hecha_con_layuot caluladorea = new Calculadora_hecha_con_layuot();
 		
-		Login_layuots regristo = new Login_layuots();
+		//Login_layuots regristo = new Login_layuots();
 		
+		dibujo dibujo = new dibujo();
 		
 		
 	}
+	
 }

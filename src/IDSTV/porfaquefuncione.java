@@ -306,15 +306,20 @@ public class porfaquefuncione {
 		panel_11.add(panel_12, BorderLayout.CENTER);
 		panel_12.setLayout(new GridLayout(2, 2, 0, 0));
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setTabSize(15);
-		panel_12.add(textArea_1);
+		JScrollPane scrollPane = new JScrollPane();
+		panel_12.add(scrollPane);
+		
+		JTextArea textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
 		
 		JLabel label_1 = new JLabel("");
 		panel_12.add(label_1);
 		
-		JTextArea textArea_3 = new JTextArea();
-		panel_12.add(textArea_3);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		panel_12.add(scrollPane_1);
+		
+		JTextArea textArea_1 = new JTextArea();
+		scrollPane_1.setViewportView(textArea_1);
 		
 		JLabel label_2 = new JLabel("");
 		panel_12.add(label_2);
