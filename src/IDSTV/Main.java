@@ -30,7 +30,9 @@ public class Main {
 		
 		//Login_layuots regristo = new Login_layuots();
 		
-		dibujo dibujo = new dibujo();
+		//dibujo dibujo = new dibujo();
+		
+		casa casa = new casa();
 		
 		
 	}
