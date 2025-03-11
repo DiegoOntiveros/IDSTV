@@ -15,7 +15,7 @@ public class Main {
 		
 		
 		
-		//window objeto = new window();
+		window objeto = new window();
 	 
 	 
 		//JFrame window = new JFrame();
@@ -24,7 +24,7 @@ public class Main {
 		
 		//Login iniciarsesion = new Login();
 		
-		//Calculadora calculadora = new Calculadora();
+	//Calculadora calculadora = new Calculadora();
 		
 		//Calculadora_hecha_con_layuot caluladorea = new Calculadora_hecha_con_layuot();
 		
@@ -32,9 +32,10 @@ public class Main {
 		
 		//dibujo dibujo = new dibujo();
 		
-		casa casa = new casa();
+		//casa casa = new casa();
 		
 		
+		Super_Mario mario = new Super_Mario();
 	}
 	
 }

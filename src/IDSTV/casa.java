@@ -38,7 +38,7 @@ public void paint(Graphics g) {
 			
 			g2d.setColor(Color.green);
 			g2d.fillRect(0, 780, 20000, 100);
-			
+		
 
 			g2d.setColor(Color.orange);
 			g2d.fillRect(0, 600, 1000, 50);
