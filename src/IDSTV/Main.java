@@ -15,7 +15,7 @@ public class Main {
 		
 		
 		
-		window objeto = new window();
+	//	window objeto = new window();
 	 
 	 
 		//JFrame window = new JFrame();
@@ -35,7 +35,9 @@ public class Main {
 		//casa casa = new casa();
 		
 		
-		Super_Mario mario = new Super_Mario();
+		//Super_Mario mario = new Super_Mario();
+		
+		Super_Mario2  level2 = new Super_Mario2();
 	}
 	
 }

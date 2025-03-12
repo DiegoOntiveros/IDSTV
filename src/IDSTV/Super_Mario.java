@@ -25,7 +25,7 @@ public class Super_Mario extends JFrame{
         this.setVisible(true);
 		
 		
-		
+	
 	}
 	
 	
