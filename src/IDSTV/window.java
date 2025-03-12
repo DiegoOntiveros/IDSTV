@@ -6,9 +6,12 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -86,6 +89,9 @@ this.setVisible(true);
 		 
 //============================================================================================	 
 		 //BARRAS DE PONER TEXTO Y PONER CONTRASENA:
+		 
+		 
+		 
 		 
 		 JTextField barra_nombre = new JTextField();
 		 barra_nombre.setBounds(20, 130, 250, 30);
@@ -199,6 +205,34 @@ this.setVisible(true);
 	     Image imagen = imagenIcon.getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH);
 	     logo.setIcon(new ImageIcon(imagen));
 
+	     
+	     boton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(barra_nombre.getText().equals("")) {	
+					barra_nombre.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					barra_nombre.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+			
+				if (new String(barra_password.getPassword()).equals("")) {
+					
+					barra_password.setBorder(BorderFactory.createLineBorder(Color.red,3));
+					
+					
+				}else {
+					
+					barra_password.setBorder(BorderFactory.createLineBorder(Color.green,3));
+
+					
+				}
+			}
+	     });
+	     
+	     
+	     
 	      this.setVisible(true);
 		 
 		 

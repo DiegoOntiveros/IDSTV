@@ -3,7 +3,10 @@ package IDSTV;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -84,7 +87,6 @@ public class Login  extends JFrame{
 		 barra_password.setBounds(20, 240, 250, 30);
 	
 		 this.add(barra_password);
-		 this.setVisible(true);
 		
 		 
 //boton de regristo:
@@ -101,6 +103,30 @@ public class Login  extends JFrame{
 		 boton.setOpaque(true);
 		 this.setVisible(true);
 		
+		  boton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					if(barra_nombre.getText().equals("")) {	
+						barra_nombre.setBorder(BorderFactory.createLineBorder(Color.red,3));
+					}else {
+						barra_nombre.setBorder(BorderFactory.createLineBorder(Color.green,3));
+					}
+				
+					if (new String(barra_password.getPassword()).equals("")) {
+						
+						barra_password.setBorder(BorderFactory.createLineBorder(Color.red,3));
+						
+						
+					}else {
+						
+						barra_password.setBorder(BorderFactory.createLineBorder(Color.green,3));
+
+						
+					}
+				}
+		     });
 		
 		
 		

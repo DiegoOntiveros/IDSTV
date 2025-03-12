@@ -15,14 +15,14 @@ public class Main {
 		
 		
 		
-	//	window objeto = new window();
+	window objeto = new window();
 	 
 	 
 		//JFrame window = new JFrame();
 		
 		//Tabla tabla = new Tabla();
 		
-		//Login iniciarsesion = new Login();
+		Login iniciarsesion = new Login();
 		
 	//Calculadora calculadora = new Calculadora();
 		
@@ -37,7 +37,7 @@ public class Main {
 		
 		//Super_Mario mario = new Super_Mario();
 		
-		Super_Mario2  level2 = new Super_Mario2();
+		//Super_Mario2  level2 = new Super_Mario2();
 	}
 	
 }
