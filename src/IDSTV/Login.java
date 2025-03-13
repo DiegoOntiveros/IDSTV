@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -107,24 +108,37 @@ public class Login  extends JFrame{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					boolean flag1 = false, flag2 = false;
 					
-					if(barra_nombre.getText().equals("")) {	
+
+					
+					if(barra_nombre.getText().equals("Miguel Torres")) {	
 						barra_nombre.setBorder(BorderFactory.createLineBorder(Color.red,3));
 					}else {
 						barra_nombre.setBorder(BorderFactory.createLineBorder(Color.green,3));
+						flag1=true;
 					}
 				
-					if (new String(barra_password.getPassword()).equals("")) {
+					if (new String(barra_password.getPassword()).equals("1234")) {
 						
 						barra_password.setBorder(BorderFactory.createLineBorder(Color.red,3));
-						
-						
 					}else {
 						
 						barra_password.setBorder(BorderFactory.createLineBorder(Color.green,3));
-
+						flag2= true;
 						
 					}
+					
+					if(flag1 && flag2) {
+						
+						JOptionPane.showMessageDialog(null,"Error al iniciar sesion verifique sus datos", "Error de sesion",JOptionPane.ERROR_MESSAGE);
+
+						
+						
+					}else
+						
+						JOptionPane.showMessageDialog(null,"inicio de sesion exitoso :D", "Inicio de sesion",JOptionPane.INFORMATION_MESSAGE);
+
 				}
 		     });
 		
