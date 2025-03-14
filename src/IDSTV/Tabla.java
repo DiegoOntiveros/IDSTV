@@ -232,6 +232,8 @@ this.setVisible(true);
 //===============================================================================================		 
 		 
 	//Opcion 3
+		 
+		 //se agegraron opciones para redirijir al inicio de sesion o al resgristo:
 		 JMenu Agregar = new JMenu("Cuenta");
 		 barra.add(Agregar);
 		 
@@ -241,6 +243,7 @@ this.setVisible(true);
 		 JButton op23 = new JButton("Regristarce");
 		 Agregar.add(op23);
 		 
+		 //Accion para ir al Incio de sesion:
 		 op11.addActionListener(new ActionListener() {
 			
 			@Override
@@ -252,7 +255,7 @@ this.setVisible(true);
 				
 			}
 		});
-		 
+		 //Accion para poder ir al regristo:
 		 op23.addActionListener(new ActionListener() {
 			
 			@Override
@@ -264,7 +267,7 @@ this.setVisible(true);
 				
 			}
 		});
-		 
+//========================================================================
 	//Opcion 4
 		 JMenu Eliminar = new JMenu("Eliminar");
 		 barra.add(Eliminar);
