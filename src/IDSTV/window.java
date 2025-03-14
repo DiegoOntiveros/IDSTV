@@ -194,6 +194,29 @@ this.setVisible(true);
 		 boton.setOpaque(true);
 		 this.setVisible(true);
 		 
+		 JButton Iniciar_sesion = new JButton();
+		 Iniciar_sesion.setBounds(250, 680, 150, 50);
+		 Iniciar_sesion.setText("Regristarce");
+		 Iniciar_sesion.setForeground(Color.BLACK);
+		 Iniciar_sesion.setFont (new Font("Arial", Font.BOLD,15));
+		 this.add(Iniciar_sesion);
+		 Iniciar_sesion.setVerticalAlignment(SwingConstants.CENTER);
+		 Iniciar_sesion.setVerticalAlignment(SwingConstants.CENTER);
+		 Iniciar_sesion.setBackground(Color.white);
+		 Iniciar_sesion.setOpaque(true);
+		 this.setVisible(true);
+		 
+		 Iniciar_sesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				dispose();
+				new Login();
+				
+			}
+		});
 		 //icono del ine tamano:
 		 JLabel logo = new JLabel();
 	        logo.setBounds(300, 250, 250, 250); 
@@ -237,7 +260,7 @@ this.setVisible(true);
 		 
 		 
 	}
-
+ 
 	
 	
 }
