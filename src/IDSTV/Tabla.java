@@ -5,7 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Menu;
-import java.awt.Toolkit;
+import java.awt.Toolkit;import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
@@ -231,8 +232,38 @@ this.setVisible(true);
 //===============================================================================================		 
 		 
 	//Opcion 3
-		 JMenu Agregar = new JMenu("Agregar");
+		 JMenu Agregar = new JMenu("Cuenta");
 		 barra.add(Agregar);
+		 
+		 JButton op11 = new JButton("Inicio");
+		 Agregar.add(op11);
+		 
+		 JButton op23 = new JButton("Regristarce");
+		 Agregar.add(op23);
+		 
+		 op11.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				dispose();
+				new Login();
+				
+			}
+		});
+		 
+		 op23.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				dispose();
+				new window();
+				
+			}
+		});
 		 
 	//Opcion 4
 		 JMenu Eliminar = new JMenu("Eliminar");
@@ -252,3 +283,4 @@ this.setVisible(true);
 	
 	
 }
+
