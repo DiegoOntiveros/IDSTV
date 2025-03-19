@@ -26,6 +26,8 @@ public class Tabla extends JFrame {
 	public Tabla() {
 		
 this.setVisible(true);
+final Color COLOR_BASE = Color.decode("#caf0f8"); 
+
 		
 		this.setTitle("textos");
 		this.setSize(500, 500);
@@ -35,9 +37,9 @@ this.setVisible(true);
 	 this.setResizable(true);
 	 this.setMaximumSize(new Dimension (1000,500));
 	 this.setMinimumSize(new Dimension(1000,600));
-		 this.setLocationRelativeTo(null);
-	        this.setLayout(null);
-	        
+	 this.setLocationRelativeTo(null);
+	 this.setLayout(null);
+     this.getContentPane().setBackground(COLOR_BASE);
 	        
 	      //Agregar icono en jframe:
 	        Image image = Toolkit.getDefaultToolkit().getImage("src/icono.png");
@@ -51,7 +53,7 @@ this.setVisible(true);
 		 textobase.setVerticalAlignment(SwingConstants.CENTER);
 		 textobase.setBounds(85, 15, 320, 50);
 		 textobase.setFont (new Font("Arial", Font.BOLD,24));
-		 textobase.setBackground(Color.white);
+		 textobase.setBackground(Color.decode("#d0f4de"));
 		 textobase.setOpaque(true);
 		 textobase.setForeground(Color.black);
 		 this.add(textobase);
@@ -66,7 +68,7 @@ this.setVisible(true);
 		 Nombre.setVerticalAlignment(SwingConstants.CENTER);
 		 Nombre.setBounds(20, 80, 210,50);
 		 Nombre.setFont (new Font("Arial", Font.BOLD,14));
-		 //Nombre.setBackground(Color.white);
+		 Nombre.setBackground(Color.white);
 		 Nombre.setOpaque(true);
 		 Nombre.setForeground(Color.black);
 		 this.add(Nombre);
@@ -174,10 +176,19 @@ this.setVisible(true);
 		 this.add(anadir);
 		 anadir.setVerticalAlignment(SwingConstants.CENTER);
 		 anadir.setVerticalAlignment(SwingConstants.CENTER);
-		 anadir.setBackground(Color.white);
+		 anadir.setBackground(Color.decode("#fff3b0"));
 		 anadir.setOpaque(true);
 		 this.setVisible(true);
 		 
+		 anadir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				new porfaquefuncione();
+			}
+		});
 		
 		 
 		 
@@ -189,6 +200,7 @@ this.setVisible(true);
 		 
 	//Opcion 1 Guardar datos:
 		 JMenuBar barra = new JMenuBar();
+		 barra.setBackground(Color.decode("#90e0ef"));
 		 
 		 JMenu Archivo = new JMenu("Guardar");
 		 barra.add(Archivo);

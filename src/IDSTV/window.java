@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class window extends JFrame {
-public static  final Color COLOR_BASE = new Color(221,201, 163);
+public static  final Color COLOR_BASE = Color.decode("#bde0fe");
 	public window() {
 
 		
@@ -190,13 +190,25 @@ this.setVisible(true);
 		 this.add(boton);
 		 boton.setVerticalAlignment(SwingConstants.CENTER);
 		 boton.setVerticalAlignment(SwingConstants.CENTER);
-		 boton.setBackground(Color.white);
+		 boton.setBackground(Color.decode("#ffd60a"));
 		 boton.setOpaque(true);
 		 this.setVisible(true);
 		 
+		 boton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				 new Tabla();
+				 dispose();
+				
+			}
+		});
+		 
 		 JButton Iniciar_sesion = new JButton();
 		 Iniciar_sesion.setBounds(250, 680, 150, 50);
-		 Iniciar_sesion.setText("Regristarce");
+		 Iniciar_sesion.setText("Iniciar sesion");
 		 Iniciar_sesion.setForeground(Color.BLACK);
 		 Iniciar_sesion.setFont (new Font("Arial", Font.BOLD,15));
 		 this.add(Iniciar_sesion);
