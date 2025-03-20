@@ -15,7 +15,7 @@ public class Main {
 		
 		
 		
-	window objeto = new window();
+	 window objeto = new window();
 	 
 	 
 		//JFrame window = new JFrame();
