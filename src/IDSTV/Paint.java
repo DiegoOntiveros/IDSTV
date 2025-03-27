@@ -4,27 +4,82 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import javax.swing.BoxLayout;
 import java.awt.CardLayout;
 import java.awt.SystemColor;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class Paint {
+import IDSTV.Paint.DrawingPanel;
 
-	private JFrame frame;
+
+
+
+public class  Paint   implements MouseListener, MouseMotionListener {
+
+	public class DrawingPanel {
+
+		public void addMouseListener(Paint paint) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void addMouseMotionListener(Paint paint) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void repaint() {
+			// TODO Auto-generated method stub
+			
+		}
+
+	}
+
 	private JTextField textField;
 	private JTextField textField_1;
+	
+	private JFrame frame;
 
+	 
+
+	private Component drawingPanel; 
+
+	private Point lastPoint; // Para almacenar la última posición del mouse
+
+     // Para almacenar los puntos dibujados
+ 
+
+	private List<Point> points = new ArrayList<>();
+ 
+    List<List<Point>> listaDePuntos = new ArrayList<>();
+ 
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +102,8 @@ public class Paint {
 	public Paint() {
 		initialize();
 	}
-
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -55,6 +111,7 @@ public class Paint {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1076, 744);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.WEST);
@@ -85,7 +142,7 @@ public class Paint {
 		JPanel Colores = new JPanel();
 		Colores.setBackground(SystemColor.control);
 		panel.add(Colores, BorderLayout.SOUTH);
-		Colores.setLayout(new GridLayout(6, 1, 5, 15));
+		Colores.setLayout(new GridLayout(0, 2, 15, 15));
 		
 		JButton btnNewButton = new JButton("            ");
 		btnNewButton.setForeground(Color.WHITE);
@@ -162,7 +219,7 @@ public class Paint {
 		
 		JPanel panel_3 = new JPanel();
 		panel_1.add(panel_3, BorderLayout.CENTER);
-		panel_3.setLayout(new BorderLayout(10, 10));
+		panel_3.setLayout(new BorderLayout(10, 0));
 		
 		JButton btnNewButton_14 = new JButton("Brush");
 		btnNewButton_14.setBackground(new Color(253, 245, 230));
@@ -192,26 +249,321 @@ public class Paint {
 		panel_1.add(panel_4, BorderLayout.SOUTH);
 		panel_4.setLayout(new GridLayout(0, 1, 0, 20));
 		
-		JButton btnNewButton_16 = new JButton("Clean");
-		btnNewButton_16.setBackground(new Color(152, 251, 152));
-		btnNewButton_16.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		panel_4.add(btnNewButton_16);
+		
 		
 		JButton btnNewButton_17 = new JButton("Save");
 		btnNewButton_17.setBackground(new Color(152, 251, 152));
 		btnNewButton_17.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 		panel_4.add(btnNewButton_17);
 		
+		
 		JPanel Lienzo = new JPanel();
 		Lienzo.setBackground(new Color(0, 0, 0));
 		 Lienzo.setBorder(new EmptyBorder(5, 5, 5, 5));
 		   // Lienzo.setBorder((Border) Lienzo);
 		    frame.getContentPane().add(Lienzo, BorderLayout.CENTER);
+		    
 		    Lienzo.setLayout(new BorderLayout(0, 0));
 		    
-		    JPanel panel_7 = new JPanel();
-		    panel_7.setBackground(new Color(255, 255, 255));
-		    Lienzo.add(panel_7, BorderLayout.CENTER);
-	}
+		    
+//=============================================================================		    
+		    JButton btnNewButton_16 = new JButton("Clean");
+			btnNewButton_16.setBackground(new Color(152, 251, 152));
+			btnNewButton_16.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+			btnNewButton_16.addActionListener(new ActionListener() {
+				
+				@Override
+				//BORRAR EL LIENZO:
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					listaDePuntos.clear(); // Limpia los trazos guardados
+			        points.clear(); // Limpia el trazo actual
+			        drawingPanel.repaint(); 
+				}
+			});
+			panel_4.add(btnNewButton_16);
+//=============================================================================		    
+
+			
+	drawingPanel = new DrawingPanel1();
+
+    Lienzo.add(drawingPanel, BorderLayout.CENTER);
+
+    drawingPanel.addMouseListener(this);
+    drawingPanel.addMouseMotionListener(this);
+
+
+}
+	
+	
+	
+
+@Override
+
+
+public void mouseClicked(MouseEvent e) {
+
+
+	// TODO Auto-generated method stub 
+
+
+}
+
+@Override
+
+
+public void mousePressed(MouseEvent e) {
+
+
+	// TODO Auto-generated method stub 
+
+
+	lastPoint = e.getPoint();
+
+
+    points.add(lastPoint); // Añadir el primer punto
+
+
+     
+
+
+}
+
+
+
+
+
+@Override
+
+
+public void mouseReleased(MouseEvent e) {
+
+
+	// TODO Auto-generated method stub 
+
+
+	
+
+
+	
+
+
+	ArrayList<Point> listaCopiada = (ArrayList<Point>) (((ArrayList<Point>) points).clone());
+
+
+	
+
+
+	listaDePuntos.add(listaCopiada); 
+
+
+	points.clear();
+
+
+	
+
+
+	System.out.println(listaDePuntos);
+
+
+}
+
+
+
+
+
+@Override
+
+
+public void mouseEntered(MouseEvent e) {
+
+
+	// TODO Auto-generated method stub 
+
+
+}
+
+
+
+
+
+@Override
+
+
+public void mouseExited(MouseEvent e) {
+
+
+	// TODO Auto-generated method stub 
+
+
+}
+
+
+
+
+
+@Override
+
+
+public void mouseDragged(MouseEvent e) {
+
+
+	// TODO Auto-generated method stub
+
+
+	 Point newPoint = e.getPoint(); 
+
+
+	 
+
+
+	 points.add(newPoint);  
+
+
+        
+
+
+     drawingPanel.repaint();
+
+
+        
+
+
+     lastPoint = newPoint;
+
+
+        
+
+
+        
+
+
+}
+
+
+
+
+
+class DrawingPanel1 extends JPanel {
+
+
+    public void DrawingPanel() {
+
+
+        setBackground(Color.WHITE);
+
+
+    }
+
+
+
+
+
+    @Override
+
+
+    protected void paintComponent(Graphics g) {
+
+
+        super.paintComponent(g);
+
+
+        Graphics2D g2d = (Graphics2D) g;
+
+
+        
+
+
+        // Configuración del dibujo
+
+
+        g2d.setColor(Color.BLACK);
+
+
+        g2d.setStroke(new BasicStroke(3));
+
+
+        
+
+
+        // Dibujar todos los trazos guardados (listaDePuntos)
+
+
+        for (List<Point> trazo : listaDePuntos) {
+
+
+            if (trazo.size() > 1) {
+
+
+                for (int i = 1; i < trazo.size(); i++) {
+
+
+                    Point p1 = trazo.get(i - 1);
+
+
+                    Point p2 = trazo.get(i);
+
+
+                    g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
+
+
+                }
+
+
+            }
+
+
+        }
+
+
+        
+
+
+        // Dibujar el trazo actual (points) mientras se arrastra el mouse
+
+
+        if (points.size() > 1) {
+
+
+            for (int i = 1; i < points.size(); i++) {
+
+
+                Point p1 = points.get(i - 1);
+
+
+                Point p2 = points.get(i);
+
+
+                g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+}
+
+
+
+
+
+@Override
+
+
+public void mouseMoved(MouseEvent e) {
+
+
+	// TODO Auto-generated method stub
+
+
+	
+
+
+}
 
 }
