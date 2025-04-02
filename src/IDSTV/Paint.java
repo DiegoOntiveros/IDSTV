@@ -59,10 +59,13 @@ public class  Paint   implements MouseListener, MouseMotionListener {
 	private List<Rectangle> figurass = new ArrayList<>();
 	private List<Triangulo> triangulos = new ArrayList<>();
     List<List<Point>> listaDePuntos = new ArrayList<>();
+
     
     //color
     //modificacion:
     private Color coloractual = Color.BLACK;
+    List<Trazos> trazosList = new ArrayList<>();
+
     
     //1 = pincel, 2 = cuadrado
     private int method = 1;
@@ -368,6 +371,7 @@ public class  Paint   implements MouseListener, MouseMotionListener {
 	drawingPanel = new DrawingPanel();
 
     Lienzo.add(drawingPanel, BorderLayout.CENTER);
+    drawingPanel.setBackground(Color.WHITE);
 
     drawingPanel.addMouseListener(this);
     drawingPanel.addMouseMotionListener(this);
@@ -398,13 +402,6 @@ public void mouseClicked(MouseEvent e) {
 	        triangulos.add(tmp);
 	    }
 
-	
-	
-
-
-	
-
-
 	drawingPanel.repaint();
 
 }
@@ -423,10 +420,12 @@ public void mousePressed(MouseEvent e) {
 public void mouseReleased(MouseEvent e) {
 
 	// TODO Auto-generated method stub 
-	ArrayList<Point> listaCopiada = (ArrayList<Point>) (((ArrayList<Point>) points).clone());
-	listaDePuntos.add(listaCopiada); 
-	points.clear();
-	System.out.println(listaDePuntos);
+	if (!points.isEmpty()) {
+        List<Point> listaCopiada = new ArrayList<>(points);
+        trazosList.add(new Trazos(listaCopiada, coloractual, grozor));
+        points.clear();
+    }
+    drawingPanel.repaint();
 	
 
 
@@ -466,54 +465,42 @@ public void mouseExited(MouseEvent e) {
 	    }
 	    @Override
 	    protected void paintComponent(Graphics g) {
-	        super.paintComponent(g);
-	        Graphics2D g2d = (Graphics2D) g;
-	        // Configuración del dibujo
-	        g2d.setColor(coloractual);
-	        //modificacion:
-	        g2d.setStroke(new BasicStroke(grozor));
-	        
+	    	
+	    	 super.paintComponent(g);
+	    	    Graphics2D g2d = (Graphics2D) g;
+	    	
+	    	 for (Trazos trazo : trazosList) {
+	    	        g2d.setColor(trazo.color);
+	    	        g2d.setStroke(new BasicStroke(trazo.grosor));
+	    	        for (int i = 1; i < trazo.puntos.size(); i++) {
+	    	            Point p1 = trazo.puntos.get(i - 1);
+	    	            Point p2 = trazo.puntos.get(i);
+	    	            g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
+	    	        }
+	    	    }
 
-	        // Dibujar todos los trazos guardados (listaDePuntos)
-	        for (List<Point> trazo : listaDePuntos) {
-	            if (trazo.size() > 1) {
-	                for (int i = 1; i < trazo.size(); i++) {
-	                    Point p1 = trazo.get(i - 1);
-	                    Point p2 = trazo.get(i);
-	                    g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
-	                    
-	                }
-	            }
-	        }
-					
-				 // Dibujar el trazo actual (points) mientras se arrastra el mouse			
-		        if (points.size() > 1) { 
-		            for (int i = 1; i < points.size(); i++) { 
-		                Point p1 = points.get(i - 1); 
-		                Point p2 = points.get(i);
-		                g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
-		            }
-		        }
-		        for (Iterator iterator = figuras.iterator(); iterator.hasNext();) {
-					Rectangle rectangle = (Rectangle) iterator.next();
+	    	    // Dibujar el trazo actual mientras se arrastra el mouse
+	    	    g2d.setColor(coloractual);
+	    	    g2d.setStroke(new BasicStroke(grozor));
+	    	    for (int i = 1; i < points.size(); i++) {
+	    	        Point p1 = points.get(i - 1);
+	    	        Point p2 = points.get(i);
+	    	        g2d.drawLine(p1.x, p1.y, p2.x, p2.y);
+	    	    }
 
-					g2d.drawRect(rectangle.x, rectangle.y, rectangle.w, rectangle.h);
-					
-				}
-		        for (Iterator iterator = figurass.iterator(); iterator.hasNext();) {
-					Rectangle rectangle = (Rectangle) iterator.next();
-
-					g2d.drawOval(rectangle.x, rectangle.y, rectangle.w, rectangle.h);
-					
-				}
-		        
-		        for (Triangulo tri : triangulos) {
-	                int[] xPoints = {tri.x, tri.x - tri.tamaño/2, tri.x + tri.tamaño/2};
-	                int[] yPoints = {tri.y - tri.tamaño/2, tri.y + tri.tamaño/2, tri.y + tri.tamaño/2};
-	                g2d.drawPolygon(xPoints, yPoints, 3);
-	            }
-		    }
-	    
+	    	    // Dibujar las figuras (rectángulos, círculos y triángulos)
+	    	    for (Rectangle rect : figuras) {
+	    	        g2d.drawRect(rect.x, rect.y, rect.w, rect.h);
+	    	    }
+	    	    for (Rectangle circulo : figurass) {
+	    	        g2d.drawOval(circulo.x, circulo.y, circulo.w, circulo.h);
+	    	    }
+	    	    for (Triangulo triangulo : triangulos) {
+	    	        int[] xPoints = {triangulo.x, triangulo.x - triangulo.tamaño / 2, triangulo.x + triangulo.tamaño / 2};
+	    	        int[] yPoints = {triangulo.y - triangulo.tamaño / 2, triangulo.y + triangulo.tamaño / 2, triangulo.y + triangulo.tamaño / 2};
+	    	        g2d.drawPolygon(xPoints, yPoints, 3);
+	    	    }
+	    	}
 	    
 		}
 	
@@ -534,10 +521,24 @@ public void mouseExited(MouseEvent e) {
 			this.y = y;
 			this.w = w;
 			this.h = h;
+			
 		}
  
 
 	}
+//
+	class Trazos {
+	    List<Point> puntos;
+	    Color color;
+	    int grosor;
+
+	    Trazos(List<Point> puntos, Color color, int grosor) {
+	        this.puntos = new ArrayList<>(puntos);
+	        this.color = color;
+	        this.grosor = grozor;
+	    }
+	}
+
 	@Override 	
 	public void mouseMoved(MouseEvent e) {		
 	
