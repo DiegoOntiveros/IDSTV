@@ -15,8 +15,8 @@ public class Main {
 		
 		
 		
-	 window objeto = new window();
-	 
+	 //window objeto = new window();
+	  Pacman pac = new Pacman();
 	 
 		//JFrame window = new JFrame();
 		
