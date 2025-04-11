@@ -3,21 +3,23 @@ package IDSTV;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.swing.JLabel;
+import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import IDSTV.Paint.Triangulo;
 
-public class Pacman extends JFrame{
-	
+public class Pacman extends JFrame {
 	
 //_______________________________________________________________________		
 //cordenadas:
@@ -25,6 +27,12 @@ public class Pacman extends JFrame{
 		public int x = 50;
 		public int y = 50;
 		public List<player> paredes = new ArrayList<>();
+		private int lastPress = 'd';
+	    private Timer timer;
+	    private Timer timeCounter; // Contador de tiempo
+	    private int elapsedTime = 0; // Tiempo transcurrido en segundos
+	    private JPanel panel_center;
+	    private JLabel timeLabel; // Etiqueta para mostrar el tiempo
 
 
 	public Pacman() {
@@ -38,6 +46,10 @@ public class Pacman extends JFrame{
 		
 		JPanel panel_norte = new JPanel();
 		panel_norte.setBackground(Color.blue);
+		timeLabel = new JLabel("Tiempo: 0 s");
+		timeLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		timeLabel.setForeground(Color.WHITE);
+		panel_norte.add(timeLabel);
 		this.add(panel_norte, BorderLayout.NORTH);
 		panel_norte.setVisible(true);
 		
@@ -49,49 +61,73 @@ public class Pacman extends JFrame{
         paredes.add(new player(120, 50, 60, 70, Color.ORANGE));
 //_______________________________________________________________________		
 //PANEL DEL MOVIEMIENTO DEL PACMAN:
-		 JPanel panel_center = new dibujo();
+		  panel_center = new dibujo();
 		 panel_center.setBackground(Color.black);
 	    this.add(panel_center, BorderLayout.CENTER);
 	    
 	    
 		 this.setFocusable(true);
 	        this.addKeyListener(new KeyAdapter() {	
-	        	
 	        	 @Override
-               
 	            public void keyPressed(KeyEvent e){
-	        		 int pacmanSize = 50;
-	        		 int newX = x; 
-	                 int newY = y;
-	                if (e.getKeyChar() == 'd' ) {
-	                    newX += 10;
-	                }
-	                if (e.getKeyChar() == 'a') {
-	                	newX -= 10;
-	                }
-	                if (e.getKeyChar() == 'w') {
-	                	newY -= 10;
-	                }
-	                if (e.getKeyChar() == 's') {
-	                	newY += 10;
-	                }
-	                if (newX > getWidth()) {
-	                    newX = -pacmanSize;
-	                }
-	                if (newX + pacmanSize < 0) {
-	                    newX = getWidth();
-	                }
-	                if (!checkCollision(newX, newY)) {
-	                    x = newX;
-	                    y = newY;
-	                }
-                    panel_center.repaint();
-
+	        		 lastPress = e.getKeyChar();
+	        	 }
+	        });
+	        
+	        timer = new Timer(100, new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                update(); 
+	            }
+	        });       
+	        timer.start();
+	        
+ //_______________________________________________________________________		        
+// Contador de tiempo:
+	        
+	        timeCounter = new Timer(1000, new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                elapsedTime++; // Incrementar el tiempo en segundos
+	                timeLabel.setText("Tiempo: " + elapsedTime);
 	            }
 	        });
+	        timeCounter.start();
 
 	        this.setVisible(true);
 	}
+	
+	public void update() {
+		
+		 int pacmanSize = 50;
+		 int newX = x; 
+         int newY = y;
+         System.out.print(x);
+        if (lastPress == 'd') {
+            newX += 10;
+        }
+        if (lastPress == 'a') {
+        	newX -= 10;
+        }
+        if (lastPress == 'w') {
+        	newY -= 10;
+        }
+        if (lastPress == 's') {
+        	newY += 10;
+        }
+        if (newX > getWidth()) {
+            newX = -pacmanSize;
+        }
+        if (newX + pacmanSize < 0) {
+            newX = getWidth();
+        }
+        if (!checkCollision(newX, newY)) {
+            x = newX;
+            y = newY;
+        }
+        panel_center.repaint();
+	}
+	
 	// Método para verificar colisiones
     public boolean checkCollision(int newX, int newY) {
         int pacmanSize = 50; // Tamaño del Pacman
@@ -105,9 +141,10 @@ public class Pacman extends JFrame{
         }
         return false;
     }
+    
 //_______________________________________________________________________		
 //GRAFICOS:
-	class dibujo extends JPanel{
+	class dibujo extends JPanel {
         @Override
 		public void paint(Graphics g) {
     		super.paint(g); 
@@ -121,23 +158,20 @@ public class Pacman extends JFrame{
             
             g2d.setColor(Color.orange);
             g2d.fillRect(120, 50, 60, 70);
-                    
     		}
 	}
-	class player{
-		int x,y,w,h;
+	
+	class player {
+		int x, y, w, h;
 		Color c;
 		
 		public player(int x, int y, int w, int h, Color c) {
-			
 			this.x = x;
 			this.y = y;
 			this.w = w;
 			this.h = h;
 			this.c = c;
-			
 		}
-		
 	}
 	
 	public static void main(String[] args) {
